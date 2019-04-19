@@ -6,7 +6,7 @@
       </el-header>
       <el-container>
         <Menu></Menu>
-        <el-main class="content">
+        <el-main>
           <router-view/>
         </el-main>
       </el-container>

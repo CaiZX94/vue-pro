@@ -23,9 +23,9 @@
           <template slot="title">
             <img src="../../assets/images/avatar.jpg" alt="" class="avatar">
           </template>
-          <el-menu-item index="2-1">个人信息</el-menu-item>
-          <el-menu-item index="2-2">设置</el-menu-item>
-          <el-menu-item index="2-3">退出登录</el-menu-item>
+          <el-menu-item index="3-1">个人信息</el-menu-item>
+          <el-menu-item index="3-2">设置</el-menu-item>
+          <el-menu-item index="3-3" @click="lougut">退出登录</el-menu-item>
         </el-submenu>
     </el-menu>
   </div>
@@ -41,6 +41,10 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
+    },
+    // 退出登录
+    lougut () {
+      this.$router.replace('/login')
     }
   }
 }
@@ -57,6 +61,7 @@ export default {
   }
   /deep/ .el-menu{
     float: right;
+    margin-right: 50px;
     .el-menu-item [class^=el-icon-]{
       font-size: 25px;
     }
