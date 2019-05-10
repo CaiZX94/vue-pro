@@ -9,6 +9,9 @@
       active-text-color="#0BB023"
       mode="horizontal"
       @select="handleSelect">
+        <el-menu-item>
+            你好，{{username}}
+        </el-menu-item>
         <el-menu-item index="1">
           <el-badge :value="12">
             <i class="el-icon-bell"></i>
@@ -33,6 +36,12 @@
 
 <script>
 export default {
+  props: {
+    username: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
       activeIndex: '1' // 当前激活菜单

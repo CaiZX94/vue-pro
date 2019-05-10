@@ -2,7 +2,7 @@
   <div class="wrap">
     <el-container>
       <el-header>
-        <Header></Header>
+        <Header :username='loginUserInfo.username'></Header>
       </el-header>
       <el-container>
         <Menu></Menu>
@@ -25,7 +25,18 @@ export default {
   },
   data () {
     return {
-
+      loginUserInfo: ''
+    }
+  },
+  created () {
+    this.getTableData()
+  },
+  methods: {
+    getTableData () {
+      // 读取本地缓存数据 获取用户管理表格数据
+      if (sessionStorage.getItem('userinfo')) {
+        this.loginUserInfo = JSON.parse(sessionStorage.getItem('userinfo'))
+      }
     }
   }
 }
