@@ -1,6 +1,7 @@
 <template>
   <div>
     <Breadcrumb :breadcrumbItem='breadcrumbItem'></Breadcrumb>
+    <p>{{$t('message.hello')}}</p>
   </div>
 </template>
 
@@ -18,6 +19,11 @@ export default {
       ]
     }
   }
+  // methods: {
+  //   switchLang (type) {
+  //     this.$i18n.locale = type === 'en' ? this.lang : 'cn'
+  //   }
+  // }
 }
 </script>
 

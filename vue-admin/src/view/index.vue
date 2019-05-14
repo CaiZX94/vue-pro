@@ -2,10 +2,10 @@
   <div class="wrap">
     <el-container>
       <el-header>
-        <Header :username='loginUserInfo.username'></Header>
+        <Header :username='loginUserInfo.username' :avatar='avatar'></Header>
       </el-header>
       <el-container>
-        <Menu></Menu>
+        <Menu  :auth='auth'></Menu>
         <el-main>
           <router-view/>
         </el-main>
@@ -25,17 +25,32 @@ export default {
   },
   data () {
     return {
-      loginUserInfo: ''
+      loginUserInfo: '',
+      avatar: '',
+      lang: 'en'
     }
   },
   created () {
     this.getTableData()
+    this.getAuth()
   },
   methods: {
     getTableData () {
       // 读取本地缓存数据 获取用户管理表格数据
-      if (sessionStorage.getItem('userinfo')) {
-        this.loginUserInfo = JSON.parse(sessionStorage.getItem('userinfo'))
+      if (sessionStorage.getItem('logininfo')) {
+        this.loginUserInfo = JSON.parse(sessionStorage.getItem('logininfo'))
+      }
+    },
+    // 判断用户角色
+    getAuth () {
+      let logininfo = sessionStorage.getItem('logininfo') ? JSON.parse(sessionStorage.getItem('logininfo')) : {}
+      this.auth = logininfo.auth === 'superAdmin' ? 'superAdmin' : logininfo.auth === 'admin' ? 'admin' : 'user'
+      if (this.auth === 'superAdmin') {
+        this.avatar = 'avatar.jpg' // 超管头像
+      } else if (this.auth === 'admin') {
+        this.avatar = 'default-avatar.jpg' // 普通管理员头像
+      } else {
+        this.avatar = 'default-avatar2.png' // 普通用户表默认头像
       }
     }
   }

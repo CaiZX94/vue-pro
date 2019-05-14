@@ -10,7 +10,7 @@
       mode="horizontal"
       @select="handleSelect">
         <el-menu-item>
-            你好，{{username}}
+            {{$t('message.hello')}}，{{username}}
         </el-menu-item>
         <el-menu-item index="1">
           <el-badge :value="12">
@@ -24,11 +24,11 @@
         </el-menu-item>
         <el-submenu index="3">
           <template slot="title">
-            <img src="../../assets/images/avatar.jpg" alt="" class="avatar">
+            <img :src="require('../../assets/images/'+avatar)" alt="" class="avatar">
           </template>
-          <el-menu-item index="3-1">个人信息</el-menu-item>
-          <el-menu-item index="3-2">设置</el-menu-item>
-          <el-menu-item index="3-3" @click="lougut">退出登录</el-menu-item>
+          <el-menu-item index="3-1">{{$t('message.personInfo')}}</el-menu-item>
+          <el-menu-item index="3-2">{{$t('message.setting')}}</el-menu-item>
+          <el-menu-item index="3-3" @click="lougut">{{$t('message.logout')}}</el-menu-item>
         </el-submenu>
     </el-menu>
   </div>
@@ -40,11 +40,15 @@ export default {
     username: {
       type: String,
       default: ''
+    },
+    avatar: {
+      type: String,
+      default: ''
     }
   },
   data () {
     return {
-      activeIndex: '1' // 当前激活菜单
+      activeIndex: '1', // 当前激活菜单
     }
   },
   methods: {

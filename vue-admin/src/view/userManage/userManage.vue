@@ -2,8 +2,8 @@
   <div>
     <Breadcrumb :breadcrumbItem='breadcrumbItem'></Breadcrumb>
     <div class="main">
-      <el-button type="primary" class="addBtn" @click="handleAdd">新建</el-button>
-      <el-button type="danger" class="addBtn" v-if="showDelAllBtn" @click="handleDel">删除</el-button>
+      <el-button type="primary" class="addBtn" @click="handleAdd">{{$t('message.addUser')}}</el-button>
+      <el-button type="danger" class="addBtn" v-if="showDelAllBtn" @click="handleDel">{{$t('message.delete')}}</el-button>
       <!-- 新建表单 -->
 
       <div class="addForm">
@@ -29,9 +29,9 @@
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="submitForm('form')">确 定</el-button>
+            <el-button @click="resetForm('ruleForm')">{{$t('message.reset')}}</el-button>
+            <el-button @click="cancel">{{$t('message.cancle')}}</el-button>
+            <el-button type="primary" @click="submitForm('form')">{{$t('message.edit')}}</el-button>
           </div>
         </el-dialog>
       </div>
@@ -53,27 +53,27 @@
         <el-table-column
           prop="name"
           label="姓名"
-          width="150">
+          width="120">
         </el-table-column>
         <el-table-column
           prop="age"
           label="年龄"
-          width="150">
+          width="120">
         </el-table-column>
         <el-table-column
           prop="gender"
           label="性别"
-          width="150">
+          width="120">
         </el-table-column>
         <el-table-column
           prop="date"
           label="日期"
-          width="150">
+          width="120">
         </el-table-column>
         <el-table-column
           prop="authType"
-          label="权限类型"
-          width="150">
+          label="角色类型"
+          width="120">
         </el-table-column>
         <el-table-column
           prop="address"
@@ -86,11 +86,11 @@
             <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                @click="handleEdit(scope.$index, scope.row)">{{$t('message.edit')}}</el-button>
               <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -112,8 +112,8 @@
           >
           <span>{{operateInfo}}</span>
           <span slot="footer" class="dialog-footer">
-            <el-button @click="confirmCancle">取 消</el-button>
-            <el-button type="primary" @click="confirmDel">确 定</el-button>
+            <el-button @click="confirmCancle">{{$t('message.cancle')}}</el-button>
+            <el-button type="primary" @click="confirmDel">{{$t('message.confirm')}}</el-button>
           </span>
         </el-dialog>
       </div>
@@ -321,7 +321,7 @@ export default {
 <style lang="scss" scoped>
 .main{
   margin-top: 30px;
-  width: 1400px;
+  width: 90%;
   .addForm{
     .el-form{
       width: 350px;

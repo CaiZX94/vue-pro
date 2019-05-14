@@ -47,7 +47,7 @@ export default {
     let validateUserName = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('用户名不能为空！'))
-      } else if (value !== 'czx' && value !== 'admin') {
+      } else if (value !== 'czx' && value !== 'admin' && value !== 'superAdmin') {
         callback(new Error('请输入正确的用户名！'))
       } else {
         callback()
@@ -56,7 +56,7 @@ export default {
     let validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('密码不能为空！'))
-      } else if ((this.ruleForm.username === 'czx' && value !== 'czx') || (this.ruleForm.username === 'admin' && value !== 'admin')) {
+      } else if ((this.ruleForm.username === 'czx' && value !== 'czx') || (this.ruleForm.username === 'admin' && value !== 'admin') || (this.ruleForm.username === 'superAdmin' && value !== 'superAdmin')) {
         callback(new Error('请输入正确的密码！'))
       } else {
         callback()
@@ -77,7 +77,7 @@ export default {
         ]
       },
       checked: false, // 是否记住密码
-      userinfo: {} // 用户登录信息
+      logininfo: {} // 用户登录信息
     }
   },
   created () {
@@ -88,12 +88,13 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let userinfo = {
+          let logininfo = {
             username: this.ruleForm.username,
             password: this.ruleForm.pass,
             checked: this.checked
           }
-          sessionStorage.setItem('userinfo', JSON.stringify(userinfo))
+          logininfo.auth = this.ruleForm.username === 'superAdmin' ? 'superAdmin' : this.ruleForm.username === 'admin' ? 'admin' : 'user'
+          sessionStorage.setItem('logininfo', JSON.stringify(logininfo))
           sessionStorage.setItem('login', 'login')
           sessionStorage.setItem('token', 'token')
           this.$router.push('/index')
@@ -119,11 +120,11 @@ export default {
     },
     // 获取缓存的登录信息
     getUserInfo () {
-      this.userinfo = sessionStorage.getItem('userinfo') ? JSON.parse(sessionStorage.getItem('userinfo')) : {}
-      if (this.userinfo.checked) {
-        this.ruleForm.username = this.userinfo.username
-        this.ruleForm.pass = this.userinfo.password
-        this.checked = this.userinfo.checked
+      this.logininfo = sessionStorage.getItem('logininfo') ? JSON.parse(sessionStorage.getItem('logininfo')) : {}
+      if (this.logininfo.checked) {
+        this.ruleForm.username = this.logininfo.username
+        this.ruleForm.pass = this.logininfo.password
+        this.checked = this.logininfo.checked
       } else {
         this.ruleForm = {
           pass: '',

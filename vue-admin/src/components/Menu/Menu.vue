@@ -12,42 +12,42 @@
         <router-link to="/index/home">
           <el-menu-item index="1">
               <i class="el-icon-menu"></i>
-              <span slot="title">首页</span>
+              <span slot="title">{{$t('message.home')}}</span>
           </el-menu-item>
         </router-link>
         <el-submenu index="2" >
           <template slot="title">
             <i class="iconfont icon-ic_a-px_living "></i>
-            <span slot="title">功能管理</span>
+            <span slot="title">{{$t('message.funManage')}}</span>
           </template>
           <el-menu-item-group>
             <router-link to="/index/fun/tab">
-              <el-menu-item index="2-1">选项卡</el-menu-item>
+              <el-menu-item index="2-1">{{$t('message.tab')}}</el-menu-item>
             </router-link>
             <router-link to="/index/fun/swiper">
-              <el-menu-item index="2-2">轮播图</el-menu-item>
+              <el-menu-item index="2-2">{{$t('message.swiper')}}</el-menu-item>
             </router-link>
             <router-link to="/index/fun/charts">
-              <el-menu-item index="2-3">图表</el-menu-item>
+              <el-menu-item index="2-3">{{$t('message.charts')}}</el-menu-item>
             </router-link>
           </el-menu-item-group>
         </el-submenu>
         <router-link to="/index/userManage">
-          <el-menu-item index="3">
+          <el-menu-item index="3" v-show="auth === 'superAdmin' || auth === 'admin'">
             <i class="iconfont icon-ic_a-px_mine_off user"></i>
-            <span slot="title">用户管理</span>
+            <span slot="title">{{$t('message.userManage')}}</span>
           </el-menu-item>
         </router-link>
         <router-link to="/index/authManage">
-          <el-menu-item index="4">
+          <el-menu-item index="4" v-show="auth === 'superAdmin'">
             <i class="iconfont icon-ic_a-px_mine_off user"></i>
-            <span slot="title">权限管理</span>
+            <span slot="title">{{$t('message.authManage')}}</span>
           </el-menu-item>
         </router-link>
         <router-link to="/index/setting">
           <el-menu-item index="5">
             <i class="el-icon-setting"></i>
-              <span slot="title">设置</span>
+              <span slot="title">{{$t('message.setting')}}</span>
           </el-menu-item>
         </router-link>
     </el-menu>
@@ -59,6 +59,12 @@ export default {
   data () {
     return {
       isCollapse: false // 默认false 展开的
+    }
+  },
+  props: {
+    auth: {
+      type: String,
+      default: ''
     }
   },
   methods: {

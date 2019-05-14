@@ -3,6 +3,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import i18n from './i18n/i18n'
 import '@/assets/style/index.scss'
 
 Vue.config.productionTip = false
@@ -38,6 +39,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  i18n,
   components: { App },
   template: '<App/>'
 })
