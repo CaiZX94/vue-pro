@@ -7,25 +7,25 @@
       <!-- 新建表单 -->
 
       <div class="addForm">
-        <el-dialog title="收货地址" :visible.sync="showForm">
+        <el-dialog :title="$t('message.receivingAddress')" :visible.sync="showForm">
           <el-form :model="ruleForm" ref="form" :rules='rules'>
             <el-form-item prop="name">
-              <el-input type="text" v-model="ruleForm.name" placeholder="姓名" autocomplete="off"></el-input>
+              <el-input type="text" v-model="ruleForm.name" :placeholder="$t('message.name')" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item prop="age" >
-              <el-input v-model.number="ruleForm.age" placeholder="年龄"></el-input>
+              <el-input v-model.number="ruleForm.age" :placeholder="$t('message.age')"></el-input>
             </el-form-item>
             <el-form-item>
               <el-radio-group v-model="ruleForm.gender">
-                <el-radio label="男"></el-radio>
-                <el-radio label="女"></el-radio>
+                <el-radio :label="$t('message.male')"></el-radio>
+                <el-radio :label="$t('message.famale')"></el-radio>
               </el-radio-group>
             </el-form-item>
             <el-form-item prop="date">
-              <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date" style="width: 100%;"></el-date-picker>
+              <el-date-picker type="date" :placeholder="$t('message.date')" v-model="ruleForm.date" style="width: 100%;"></el-date-picker>
             </el-form-item>
             <el-form-item prop="address" >
-              <el-input type="text" v-model="ruleForm.address" autocomplete="off" placeholder="地址"></el-input>
+              <el-input type="text" v-model="ruleForm.address" autocomplete="off" :placeholder="$t('message.address')"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
@@ -52,36 +52,36 @@
         </el-table-column>
         <el-table-column
           prop="name"
-          label="姓名"
+          :label="$t('message.name')"
           width="120">
         </el-table-column>
         <el-table-column
           prop="age"
-          label="年龄"
+          :label="$t('message.age')"
           width="120">
         </el-table-column>
         <el-table-column
           prop="gender"
-          label="性别"
+          :label="$t('message.gender')"
           width="120">
         </el-table-column>
         <el-table-column
           prop="date"
-          label="日期"
+          :label="$t('message.date')"
           width="120">
         </el-table-column>
         <el-table-column
           prop="authType"
-          label="角色类型"
+          :label="$t('message.role')"
           width="120">
         </el-table-column>
         <el-table-column
           prop="address"
-          label="地址">
+          :label="$t('message.address')">
         </el-table-column>
         <el-table-column
           prop="operate"
-          label="操作"
+          :label="$t('message.operate')"
           width="170">
             <template slot-scope="scope">
               <el-button
@@ -106,7 +106,7 @@
       <!-- 对话框 -->
       <div class="delOperateDialog">
         <el-dialog
-          title="提示"
+          :title="$t('message.tip')"
           :visible.sync="dialogVisible"
           width="430px"
           >
@@ -150,8 +150,8 @@ export default {
     return {
       background: true,
       breadcrumbItem: [
-        {label: '首页', isHome: true},
-        {label: '权限管理'}
+        {label: this.$t('message.home'), isHome: true},
+        {label: this.$t('message.authManage')}
       ],
       tableData: [], // 表格数据
       checked: [],

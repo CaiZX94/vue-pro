@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      activeIndex: '1', // 当前激活菜单
+      activeIndex: '1' // 当前激活菜单
     }
   },
   methods: {

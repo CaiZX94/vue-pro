@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       breadcrumbItem: [
-        {label: '首页', isHome: true}
+        {label: this.$t('message.home'), isHome: true}
       ]
     }
   }

@@ -2,7 +2,7 @@
   <div>
     <div class="notFound">
       <img src="../../assets/images/404.png" alt="" class="notFoundImg">
-      <div class="des">gg~页面跑丢了....</div>
+      <div class="des">{{$t('message.notFound')}}</div>
     </div>
   </div>
 </template>

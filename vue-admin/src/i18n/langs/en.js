@@ -27,7 +27,16 @@ const en = {
     'cancle': 'Cancle',
     'tip': 'Tip',
     'personInfo': 'PersonInfo',
-    'logout': 'Logout'
+    'logout': 'Logout',
+    'male': 'male',
+    'famale': 'famale',
+    'receivingAddress': 'Receiving Address',
+    'notFound': 'Not Found The Page',
+    'baseSetting': 'Basic Setting',
+    'infoSetting': 'Infomation Setting',
+    'langSetting': 'Language Setting',
+    'themeSetting': 'Theme Setting',
+    'personSetting': 'Person Setting'
   },
   ...enLocale
 }

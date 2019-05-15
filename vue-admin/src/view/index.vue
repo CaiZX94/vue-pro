@@ -37,13 +37,13 @@ export default {
   methods: {
     getTableData () {
       // 读取本地缓存数据 获取用户管理表格数据
-      if (sessionStorage.getItem('logininfo')) {
-        this.loginUserInfo = JSON.parse(sessionStorage.getItem('logininfo'))
+      if (localStorage.getItem('logininfo')) {
+        this.loginUserInfo = JSON.parse(localStorage.getItem('logininfo'))
       }
     },
     // 判断用户角色
     getAuth () {
-      let logininfo = sessionStorage.getItem('logininfo') ? JSON.parse(sessionStorage.getItem('logininfo')) : {}
+      let logininfo = localStorage.getItem('logininfo') ? JSON.parse(localStorage.getItem('logininfo')) : {}
       this.auth = logininfo.auth === 'superAdmin' ? 'superAdmin' : logininfo.auth === 'admin' ? 'admin' : 'user'
       if (this.auth === 'superAdmin') {
         this.avatar = 'avatar.jpg' // 超管头像

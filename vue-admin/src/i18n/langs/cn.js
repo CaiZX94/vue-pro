@@ -27,7 +27,16 @@ const cn = {
     'cancle': '取消',
     'tip': '提示',
     'personInfo': '个人信息',
-    'logout': '退出登录'
+    'logout': '退出登录',
+    'male': '男',
+    'famale': '女',
+    'receivingAddress': '收货地址',
+    'notFound': '页面跑丢了....',
+    'baseSetting': '基本设置',
+    'infoSetting': '信息设置',
+    'langSetting': '语言设置',
+    'themeSetting': '主题设置',
+    'personSetting': '个人设置'
   },
   ...zhLocale
 }

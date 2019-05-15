@@ -14,9 +14,9 @@ export default {
   data () {
     return {
       breadcrumbItem: [
-        {label: '首页', isHome: true},
-        {label: '功能管理'},
-        {label: '轮播图'}
+        {label: this.$t('message.home'), isHome: true},
+        {label: this.$t('message.funManage')},
+        {label: this.$t('message.swiper')}
       ]
     }
   }

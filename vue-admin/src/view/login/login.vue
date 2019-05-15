@@ -94,7 +94,7 @@ export default {
             checked: this.checked
           }
           logininfo.auth = this.ruleForm.username === 'superAdmin' ? 'superAdmin' : this.ruleForm.username === 'admin' ? 'admin' : 'user'
-          sessionStorage.setItem('logininfo', JSON.stringify(logininfo))
+          localStorage.setItem('logininfo', JSON.stringify(logininfo))
           sessionStorage.setItem('login', 'login')
           sessionStorage.setItem('token', 'token')
           this.$router.push('/index')
@@ -120,7 +120,7 @@ export default {
     },
     // 获取缓存的登录信息
     getUserInfo () {
-      this.logininfo = sessionStorage.getItem('logininfo') ? JSON.parse(sessionStorage.getItem('logininfo')) : {}
+      this.logininfo = localStorage.getItem('logininfo') ? JSON.parse(localStorage.getItem('logininfo')) : {}
       if (this.logininfo.checked) {
         this.ruleForm.username = this.logininfo.username
         this.ruleForm.pass = this.logininfo.password
