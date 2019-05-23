@@ -13,6 +13,7 @@ const en = {
     'charts': 'Charts',
     'addUser': 'AddUser',
     'addAdmin': 'AddAdmin',
+    'copy': 'Copy',
     'edit': 'Edit',
     'delete': 'Delete',
     'name': 'Name',
@@ -36,7 +37,11 @@ const en = {
     'infoSetting': 'Infomation Setting',
     'langSetting': 'Language Setting',
     'themeSetting': 'Theme Setting',
-    'personSetting': 'Person Setting'
+    'avatarSetting': 'Avatar Setting',
+    'passwordSetting': 'Password Setting',
+    'oldPassword': 'Old Password',
+    'newPassword': 'New Password',
+    'save': 'Save'
   },
   ...enLocale
 }

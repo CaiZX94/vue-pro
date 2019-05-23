@@ -33,6 +33,7 @@ export default new Router({
         {
           path: 'userManage',
           name: 'userManage',
+          // meta: {permission: {superAdmin: true, admin: true}},
           component: (resolve) => require(['../view/userManage/userManage'], resolve)
         },
         {
@@ -43,6 +44,7 @@ export default new Router({
         {
           path: 'authManage',
           name: 'authManage',
+          // meta: {permission: {superAdmin: true}},
           component: (resolve) => require(['../view/authManage/authManage'], resolve)
         },
         {

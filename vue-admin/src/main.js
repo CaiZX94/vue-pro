@@ -4,6 +4,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import i18n from './i18n/i18n'
+import {validPerm} from './utils/permissions.js'
 import '@/assets/style/index.scss'
 
 Vue.config.productionTip = false
@@ -42,4 +43,14 @@ new Vue({
   i18n,
   components: { App },
   template: '<App/>'
+})
+
+// 自定义指令 权限控制
+Vue.directive('perm', {
+  inserted: function (el, binding, vNode) {
+    // let permData = vNode.context._routerRoot._route.meta.permission
+    if (validPerm() && !validPerm()[binding.value]) {
+      el.parentNode.removeChild(el) // 删除元素
+    }
+  }
 })

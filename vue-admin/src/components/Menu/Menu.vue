@@ -33,13 +33,13 @@
           </el-menu-item-group>
         </el-submenu>
         <router-link to="/index/userManage">
-          <el-menu-item index="3" v-show="auth === 'superAdmin' || auth === 'admin'">
+          <el-menu-item index="3" v-perm="'admin'">
             <i class="iconfont icon-ic_a-px_mine_off user"></i>
             <span slot="title">{{$t('message.userManage')}}</span>
           </el-menu-item>
         </router-link>
         <router-link to="/index/authManage">
-          <el-menu-item index="4" v-show="auth === 'superAdmin'">
+          <el-menu-item index="4" v-perm="'superAdmin'">
             <i class="iconfont icon-ic_a-px_mine_off user"></i>
             <span slot="title">{{$t('message.authManage')}}</span>
           </el-menu-item>

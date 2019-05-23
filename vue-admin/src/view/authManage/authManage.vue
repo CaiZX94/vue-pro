@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumb :breadcrumbItem='breadcrumbItem'></Breadcrumb>
-    <div class="main">
+    <div class="main" v-scroll="scroll">
       <el-button type="primary" class="addBtn" @click="handleAdd">{{$t('message.addAdmin')}}</el-button>
       <el-button type="danger" class="addBtn" v-if="showDelAllBtn" @click="handleDel">{{$t('message.delete')}}</el-button>
       <!-- 新建表单 -->
@@ -31,7 +31,7 @@
           <div slot="footer" class="dialog-footer">
             <el-button @click="resetForm('ruleForm')">{{$t('message.reset')}}</el-button>
             <el-button @click="cancel">{{$t('message.cancle')}}</el-button>
-            <el-button type="primary" @click="submitForm('form')">{{$t('message.edit')}}</el-button>
+            <el-button type="primary" @click="submitForm('form')">{{$t('message.confirm')}}</el-button>
           </div>
         </el-dialog>
       </div>
@@ -82,8 +82,11 @@
         <el-table-column
           prop="operate"
           :label="$t('message.operate')"
-          width="170">
+          width="270">
             <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleCopy(scope.$index, scope.row)">{{$t('message.copy')}}</el-button>
               <el-button
                 size="mini"
                 @click="handleEdit(scope.$index, scope.row)">{{$t('message.edit')}}</el-button>
@@ -130,6 +133,15 @@ export default {
   name: 'authManage',
   components: {
     Breadcrumb
+  },
+  directives: {
+    bind: function (el, binding) {
+      var ele = el
+      ele.addEventListener('scroll', function () {
+        var fun = binding.value
+        fun(ele)
+      })
+    }
   },
   data () {
     let validateName = (rule, value, callback) => {
@@ -190,7 +202,9 @@ export default {
         this.tableData = JSON.parse(localStorage.getItem('mgrManageData'))
       }
     },
-
+    scroll (el) {
+      console.log(el)
+    },
     // 单选
     check (val) {
       this.checked = [...val]
@@ -218,8 +232,19 @@ export default {
     handleDel () {
 
     },
+    // 复制
+    handleCopy (index, row) {
+      this.tableData.push({
+        name: row.name,
+        age: row.age,
+        gender: row.gender,
+        date: row.date,
+        address: row.address
+      })
+      localStorage.setItem('mgrManageData', JSON.stringify(this.tableData))
+    },
     // 编辑
-    handleEdit (index, row, type) {
+    handleEdit (index, row) {
       this.showForm = true
       this.ruleForm = {
         name: row.name,

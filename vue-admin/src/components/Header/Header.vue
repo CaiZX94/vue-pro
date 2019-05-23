@@ -27,7 +27,7 @@
             <img :src="require('../../assets/images/'+avatar)" alt="" class="avatar">
           </template>
           <el-menu-item index="3-1">{{$t('message.personInfo')}}</el-menu-item>
-          <el-menu-item index="3-2">{{$t('message.setting')}}</el-menu-item>
+          <el-menu-item index="3-2" @click="setting">{{$t('message.setting')}}</el-menu-item>
           <el-menu-item index="3-3" @click="lougut">{{$t('message.logout')}}</el-menu-item>
         </el-submenu>
     </el-menu>
@@ -54,6 +54,10 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
+    },
+    // 设置
+    setting () {
+      this.$router.push('/index/setting')
     },
     // 退出登录
     lougut () {

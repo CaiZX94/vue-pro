@@ -13,6 +13,7 @@ const cn = {
     'charts': '图表',
     'addUser': '添加用户',
     'addAdmin': '添加管理员',
+    'copy': '复制',
     'edit': '编辑',
     'delete': '删除',
     'name': '姓名',
@@ -22,7 +23,7 @@ const cn = {
     'role': '角色类型',
     'address': '地址',
     'operate': '操作',
-    'confirm': '确实',
+    'confirm': '确定',
     'reset': '重置',
     'cancle': '取消',
     'tip': '提示',
@@ -36,7 +37,11 @@ const cn = {
     'infoSetting': '信息设置',
     'langSetting': '语言设置',
     'themeSetting': '主题设置',
-    'personSetting': '个人设置'
+    'avatarSetting': '头像设置',
+    'passwordSetting': '密码设置',
+    'oldPassword': '原始密码',
+    'newPassword': '新密码',
+    'save': '保存'
   },
   ...zhLocale
 }

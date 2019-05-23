@@ -5,7 +5,7 @@
         <Header :username='loginUserInfo.username' :avatar='avatar'></Header>
       </el-header>
       <el-container>
-        <Menu  :auth='auth'></Menu>
+        <Menu :auth='auth'></Menu>
         <el-main>
           <router-view/>
         </el-main>
@@ -50,7 +50,7 @@ export default {
       } else if (this.auth === 'admin') {
         this.avatar = 'default-avatar.jpg' // 普通管理员头像
       } else {
-        this.avatar = 'default-avatar2.png' // 普通用户表默认头像
+        this.avatar = 'default-avatar2.png' // 普通用户默认头像
       }
     }
   }
